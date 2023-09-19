@@ -2,7 +2,7 @@ import React from 'react'
 import bg_food_image from '/assets/images/login_image.png'
 const Login = () => {
     const [hoverInput, setHoverInput] = React.useState({ username: false, password: false });
-    const onHoverInput = (e: any) => {
+    const onHoverInput = (e: React.FocusEvent<HTMLInputElement>) => {
         setHoverInput({
             password: e.target.name === "password",
             username: e.target.name === "username",
