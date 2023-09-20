@@ -1,11 +1,12 @@
-import React from 'react'
 import OrdersHeader from './OrdersHeader'
+import OrdersBody from './OrdersBody'
 
 const Orders = () => {
   return (
-    <div>
-      <OrdersHeader/>
-    </div>
+    <>
+      <OrdersHeader />
+      <OrdersBody />
+    </>
   )
 }
 

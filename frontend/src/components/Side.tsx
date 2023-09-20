@@ -52,10 +52,12 @@ const menuItems = [
 
 ];
 // react router dom 
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 const Side = () => {
     const navigate = useNavigate();
-    const logOut=()=>{
+    const routePath = useLocation().pathname;
+
+    const logOut = () => {
         navigate("/login")
     }
     return (
@@ -71,8 +73,8 @@ const Side = () => {
                 <div className='w-1 bottom-0 top-0 bg-global_yellow absolute'>
                 </div>
                 {
-                    menuItems.map((item, index) => <div onClick={() => navigate(item.path)} key={index} className='group transition-all duration-200 hover:text-white hover:bg-global_yellow py-3 flex items-center px-5 gap-[15px] rounded-e-md cursor-pointer'>
-                        <div className='bg-global_silver/50 p-2 group-hover:bg-transparent rounded-md'>
+                    menuItems.map((item, index) => <div onClick={() => navigate(item.path)} key={index} className={`group transition-all duration-200  ${routePath === item.path && 'bg-global_yellow text-white'}  py-3 flex items-center px-5 gap-[15px] rounded-e-md cursor-pointer`}>
+                        <div className={`bg-global_silver/50 p-2 ${routePath === item.path && 'bg-transparent'} rounded-md`}>
                             {item.icon}
                         </div>
                         <span className='text-[15px] '>{item.label}</span>

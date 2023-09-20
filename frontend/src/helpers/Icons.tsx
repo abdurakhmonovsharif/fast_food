@@ -56,12 +56,56 @@ export const PlusIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={16}
     <path d="M8 1V15" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     <path d="M1 8H15" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
 </svg>;
-export const FilterIcon1=()=><svg xmlns="http://www.w3.org/2000/svg" width={14} height={14} viewBox="0 0 14 14" fill="none">
-  <rect width={14} height={6} rx={2} fill="#8D9BA8" />
-  <rect y={8} width={14} height={6} rx={2} fill="#8D9BA8" />
+export const FilterIcon1 = () => <svg xmlns="http://www.w3.org/2000/svg" width={14} height={14} viewBox="0 0 14 14" fill="none">
+    <rect width={14} height={6} rx={2} fill="#8D9BA8" />
+    <rect y={8} width={14} height={6} rx={2} fill="#8D9BA8" />
 </svg>;
-export const FilterIcon2=()=><svg xmlns="http://www.w3.org/2000/svg" width={14} height={14} viewBox="0 0 14 14" fill="none">
-  <rect x={14} width={10} height={6} rx={2} transform="rotate(90 14 0)" fill="#8D9BA8" />
-  <rect x={6} width={14} height={6} rx={2} transform="rotate(90 6 0)" fill="#8D9BA8" />
+export const FilterIcon2 = () => <svg xmlns="http://www.w3.org/2000/svg" width={14} height={14} viewBox="0 0 14 14" fill="none">
+    <rect x={14} width={10} height={6} rx={2} transform="rotate(90 14 0)" fill="#8D9BA8" />
+    <rect x={6} width={14} height={6} rx={2} transform="rotate(90 6 0)" fill="#8D9BA8" />
+</svg>;
+export const ClockIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 18 18" fill="none">
+    <g opacity="0.5">
+        <path fillRule="evenodd" clipRule="evenodd" d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9 4.20001V9.00001L12.2 10.6" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+</svg>;
+export const BookMark = () => <svg xmlns="http://www.w3.org/2000/svg" width={15} height={18} viewBox="0 0 15 18" fill="none">
+    <g opacity="0.5">
+        <path fillRule="evenodd" clipRule="evenodd" d="M13.4444 17L7.22222 12.5556L1 17V2.77778C1 1.79594 1.79594 1 2.77778 1H11.6667C12.6485 1 13.4444 1.79594 13.4444 2.77778V17Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+</svg>;
+export const UserIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={16} height={18} viewBox="0 0 16 18" fill="none">
+    <g opacity="0.5">
+        <path d="M15.2222 17V15.2222C15.2222 13.2585 13.6303 11.6667 11.6667 11.6667H4.55556C2.59188 11.6667 1 13.2585 1 15.2222V17" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M8.11122 8.11111C10.0749 8.11111 11.6668 6.51923 11.6668 4.55556C11.6668 2.59188 10.0749 1 8.11122 1C6.14754 1 4.55566 2.59188 4.55566 4.55556C4.55566 6.51923 6.14754 8.11111 8.11122 8.11111Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+</svg>;
+export const CallIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={17} height={17} viewBox="0 0 17 17" fill="none">
+    <g opacity="0.5">
+        <path fillRule="evenodd" clipRule="evenodd" d="M16.2381 12.3676V14.6533C16.2398 15.0824 16.0606 15.4923 15.7444 15.7824C15.4282 16.0724 15.0044 16.2158 14.5771 16.1772C12.2326 15.9224 9.98054 15.1213 8.00187 13.8381C6.16098 12.6683 4.60022 11.1076 3.43044 9.26668C2.14281 7.27903 1.34148 5.01601 1.09139 2.66097C1.0529 2.23496 1.19522 1.8124 1.4836 1.49649C1.77197 1.18058 2.17985 1.00042 2.60759 1.00001H4.8933C5.65815 0.992486 6.31006 1.55313 6.41711 2.31049C6.51358 3.04197 6.6925 3.76019 6.95044 4.45144C7.15976 5.0083 7.02588 5.63606 6.60758 6.05906L5.63997 7.02668C6.72458 8.93414 8.30393 10.5135 10.2114 11.5981L11.179 10.6305C11.602 10.2122 12.2298 10.0783 12.7866 10.2876C13.4779 10.5456 14.1961 10.7245 14.9276 10.821C15.6937 10.9291 16.2573 11.5941 16.2381 12.3676Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+</svg>;
+export const PasteIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={14} height={18} viewBox="0 0 14 18" fill="none">
+    <g opacity="0.5">
+        <path d="M9.6 2.60001H11.2C12.0837 2.60001 12.8 3.31635 12.8 4.20001V15.4C12.8 16.2837 12.0837 17 11.2 17H1.6C0.716344 17 0 16.2837 0 15.4V4.20001C0 3.31635 0.716344 2.60001 1.6 2.60001H3.2" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="3.19995" y={1} width="6.4" height="3.2" rx={1} stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+</svg>;
+export const TrackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={17} height={15} viewBox="0 0 17 15" fill="none">
+    <g opacity="0.5">
+        <rect y={1} width="10.9091" height="9.45455" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M10.9092 4.63635H13.8183L16.0001 6.81817V10.4545H10.9092V4.63635V4.63635Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M3.27277 14.0909C4.27693 14.0909 5.09095 13.2769 5.09095 12.2727C5.09095 11.2686 4.27693 10.4546 3.27277 10.4546C2.26862 10.4546 1.45459 11.2686 1.45459 12.2727C1.45459 13.2769 2.26862 14.0909 3.27277 14.0909Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M12.7274 14.0909C13.7315 14.0909 14.5455 13.2769 14.5455 12.2727C14.5455 11.2686 13.7315 10.4546 12.7274 10.4546C11.7232 10.4546 10.9092 11.2686 10.9092 12.2727C10.9092 13.2769 11.7232 14.0909 12.7274 14.0909Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+</svg>;
+export const RejectIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 12 12" fill="none">
+    <path d="M11 1L1 11" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M1 1L11 11" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
+export const CheckIcon=()=><svg xmlns="http://www.w3.org/2000/svg" width={16} height={12} viewBox="0 0 16 12" fill="none">
+  <path d="M15 1L5.375 10.625L1 6.25" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
 </svg>
+
 

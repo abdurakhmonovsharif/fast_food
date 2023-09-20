@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Orders from './components/Orders/Orders'
@@ -12,6 +12,10 @@ import Catalog from './components/Catalog/Catalog'
 
 const App = () => {
     const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Navigate to={"/dashboard"} />
+        },
         {
             path: "/dashboard",
             element: <Home />,
