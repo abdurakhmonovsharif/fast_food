@@ -3,8 +3,9 @@ import { BookMark, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackI
 // components from next ui
 import { Button } from '@nextui-org/react'
 const OrdersCard = () => {
+  
     return (
-        <div className='h-[150px] bg-white grid grid-cols-4 grid-rows-1 rounded-md shadow-md'>
+        <div className='h-[150px] max-w-[952px] bg-white grid grid-cols-4 grid-rows-1 rounded-md shadow-md'>
             <div className="border-r-2 justify-center py-5 flex items-start gap-4">
                 <div className="flex flex-col gap-[19px]">
                     <div className="bg-global_green  text-center text-white rounded-full py-[10px] w-24">
@@ -20,7 +21,7 @@ const OrdersCard = () => {
                     <BookMark />
                 </Button>
             </div>
-            <div className="border-r-2 flex justify-start flex-col items-center px-[34px]">
+            <div className="border-r-2 flex justify-center flex-col items-center px-[34px]">
                 <div className=" py-5 gap-[18px]  flex items-start">
                     <div className="mt-2">
                         <UserIcon />
@@ -30,14 +31,14 @@ const OrdersCard = () => {
                         Jumayev
                     </p>
                 </div>
-                <div className="flex gap-[19px]  items-center justify-start w-full">
+                <div className="flex gap-[19px]  items-center justify-center w-full">
                     <CallIcon />
                     <p className="text-sm  font-medium text-global_text_color">(+99 893) 461-41-88</p>
                 </div>
             </div>
             <div className="border-r-2 flex justify-center py-5 gap-5
             items-start">
-                <div className="flex flex-col gap-[18px]">
+                <div className="flex flex-col gap-[23px] ">
                     <div className="space-y-2">
                         <div className="flex items-center justify-start gap-[12px] ">
                             <div>
@@ -64,7 +65,7 @@ const OrdersCard = () => {
                     <p className="text-xs">Payme</p>
                 </div>
             </div>
-            <div className=" relative flex items-start justify-cetner pl-[35px] py-5 flex-col">
+            <div className="relative flex items-start justify-cetner pl-[35px] py-5 flex-col">
                 <div>
                     <p className="text-[11px] text-global_text_color/30">Operator:</p>
                     <p className="text-sm font-semibold">Komilova M</p>

@@ -63,7 +63,7 @@ const Side = () => {
     return (
         <aside className="w-[300px] max-w-[300px] py-7 flex flex-col justify-between h-screen shadow-md bg-white">
             <div className="flex items-center gap-5 px-6">
-                <Avatar src={avatar_image} className='w-[70px] h-[70px] ' />
+                <Avatar src={avatar_image} className='w-[70px] h-[70px]' />
                 <div >
                     <h1 className='text-global_text_color text-base font-semibold'>Fast Food</h1>
                     <p className='text-global_text_color/50 text-xs'>Online maxsulot sotuvi</p>
