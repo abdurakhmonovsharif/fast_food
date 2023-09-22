@@ -3,9 +3,8 @@ import { BookMark, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackI
 // components from next ui
 import { Button } from '@nextui-org/react'
 const OrdersCard = () => {
-  
     return (
-        <div className='h-[150px] max-w-[952px] bg-white grid grid-cols-4 grid-rows-1 rounded-md shadow-md'>
+        <div className='h-[150px]  bg-white grid grid-cols-4 grid-rows-1 rounded-md shadow-md'>
             <div className="border-r-2 justify-center py-5 flex items-start gap-4">
                 <div className="flex flex-col gap-[19px]">
                     <div className="bg-global_green  text-center text-white rounded-full py-[10px] w-24">
@@ -54,7 +53,7 @@ const OrdersCard = () => {
                         </div>
                     </div>
                     <div>
-                        <p className="text-global_text_color/30 text-xs">Umumiy summa</p>
+                        <p className="text-global_text_color/60 text-xs">Umumiy summa</p>
                         <p className="text-global_text_color">
                             <span className="font-semibold"> 40,400</span> UZS
                         </p>
@@ -76,10 +75,10 @@ const OrdersCard = () => {
                         Maksim Gorkiy</p>
                 </div>
                 <div className="absolute flex flex-col gap-3 -right-5">
-                    <Button isIconOnly className="rounded-full bg-white border-3 border-global_silver">
+                    <Button isIconOnly className="rounded-full bg-white border-4 border-global_silver">
                         <RejectIcon />
                     </Button>
-                    <Button isIconOnly className="rounded-full bg-white border-3 border-global_silver">
+                    <Button isIconOnly className="rounded-full bg-white border-4 border-global_silver">
                         <CheckIcon />
                     </Button>
                 </div>

@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {}
 
 :root {
     @apply bg-global_silver font-Noto;
