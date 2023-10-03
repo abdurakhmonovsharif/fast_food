@@ -10,7 +10,6 @@ import Report from './components/Report/Report'
 import Catalog from './components/Catalog/Catalog'
 
 const App = () => {
-
     const router = createBrowserRouter([
         {
             path: "/",

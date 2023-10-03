@@ -107,12 +107,11 @@ const columns = [
 ];
 
 const ProductTable = () => {
-    const [page, setPage] = React.useState(0);
-    const [isLoading, setIsLoading] = React.useState(false);
-    const hasMore = page > 9;
+    // const [page, setPage] = React.useState(0);
+    // const [isLoading, setIsLoading] = React.useState(false);
+    // const hasMore = page > 9;
     return (
         <React.Fragment>
-
             <Table
                 isHeaderSticky
                 className='px-3'
@@ -120,16 +119,16 @@ const ProductTable = () => {
                     base: "max-h-[calc(100vh-120px)] overflow-y-auto",
                     table: "min-h-[calc(100vh-120px)] "
                 }}
-                bottomContent={
-                    hasMore && !isLoading ? (
-                        <div className="flex w-full justify-center">
-                            <Button isDisabled={false} variant="flat" >
-                                {<Spinner color="white" size="sm" />}
-                                Yana yuklash
-                            </Button>
-                        </div>
-                    ) : null
-                }
+            // bottomContent={
+            //     hasMore && !isLoading ? (
+            //         <div className="flex w-full justify-center">
+            //             <Button isDisabled={false} variant="flat" >
+            //                 {<Spinner color="white" size="sm" />}
+            //                 Yana yuklash
+            //             </Button>
+            //         </div>
+            //     ) : null
+            // }
             >
                 <TableHeader columns={columns} >
                     {(column) => <TableColumn className='bg-global_silver' key={column.key}>{column.label}</TableColumn>}
@@ -151,7 +150,6 @@ const ProductTable = () => {
                             </TableCell>
                             <TableCell>
                                 <p className='text-global_text_color text-[13px]'>{item.other}</p>
-
                             </TableCell>
                             <TableCell className='flex items-center gap-3'>
                                 <Button isIconOnly radius='full' className='bg-transparent border-global_silver border-4'><PenIcon /></Button>

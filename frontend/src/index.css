@@ -7,8 +7,19 @@
     @apply bg-global_silver font-Noto;
 }
 
+.border-medium {
+    border-width: 1px !important;
+}
 
+.data-\[open\=false\]\:border-foreground[data-open=true]:hover {
+    @apply !border-global_silver
+}
 
+.min-h-unit-8{
+    height: 44px !important;
+    width: 100%;
+    border-radius: 6px !important;
+}
 
 
 /* scroll styling */

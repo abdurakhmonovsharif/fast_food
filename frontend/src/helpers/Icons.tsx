@@ -143,3 +143,9 @@ export const FilterIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={4
 export const PenIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16" fill="none">
     <path fillRule="evenodd" clipRule="evenodd" d="M11.5 1.7C12.0002 1.19983 12.7292 1.00449 13.4124 1.18756C14.0957 1.37064 14.6294 1.90432 14.8124 2.58756C14.9955 3.27081 14.8002 3.99983 14.3 4.5L4.85 13.95L1 15L2.05 11.15L11.5 1.7Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
 </svg>;
+export const CloudIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
+    <path d="M16 14L12 10L8 14" stroke="#8D9BA8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M12 10V19" stroke="#8D9BA8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M20.3901 16.39C22.3965 15.2961 23.4059 12.9812 22.8423 10.7667C22.2786 8.55208 20.2853 7.00147 18.0001 6.99996H16.7401C15.9112 3.79378 13.1925 1.42974 9.90228 1.05406C6.61205 0.678389 3.43047 2.36875 1.90016 5.30556C0.369835 8.24237 0.807154 11.8185 3.00008 14.3" stroke="#8D9BA8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M16 14L12 10L8 14" stroke="#8D9BA8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>;

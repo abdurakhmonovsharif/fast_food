@@ -19,7 +19,9 @@ module.exports = {
       fontFamily: {
         Noto: "Noto Sans",
       },
+      
     },
+   
   },
   darkMode: "class",
   plugins: [nextui()],
