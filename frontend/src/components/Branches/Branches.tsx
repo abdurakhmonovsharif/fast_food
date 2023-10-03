@@ -1,9 +1,13 @@
+import React from 'react'
+import BranchesHeader from './BranchesHeader'
+import BranchesBody from './BranchesBody'
 
 const Branches = () => {
   return (
-    <div>
-      
-    </div>
+    <React.Fragment>
+      <BranchesHeader/>
+      <BranchesBody/>
+    </React.Fragment>
   )
 }
 

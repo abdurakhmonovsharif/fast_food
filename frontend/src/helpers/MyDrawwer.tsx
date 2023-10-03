@@ -41,12 +41,12 @@ const MyDrawer = ({
     <React.Fragment>
       {
         isDrawerOpen &&
-        <div className={` absolute inset-0 pt-0.5 left-[300px] z-10 bg-global_silver/60`}
+        <div className={`absolute inset-0 pt-0.5 left-[300px] !z-[99999] bg-global_silver/60`}
           style={{ top: mt + "px" }}
         >
           {/* drawer body*/}
           <div ref={drawerRef} className={`float-right h-full  ${size === "sm" ? 'w-[366px]' : 'w-[79.2%] max-w-[857px]'}   bg-white relative shadow-lg`}>
-            <Button onClick={onClose} isIconOnly className="bg-white p-2  absolute -z-[1] top-[31px]  -left-10 rounded-l-full">
+            <Button onClick={onClose} isIconOnly className="!bg-white p-2  absolute -z-[1] top-[31px]  -left-10 rounded-l-full">
               <RejectIcon />
             </Button>
             {children}

@@ -1,9 +1,12 @@
-
+import React from 'react'
+import CategoriesHeader from './CategoriesHeader'
+import CategoriesBody from './CategoriesBody'
 const Categories = () => {
   return (
-    <div>
-      
-    </div>
+    <React.Fragment>
+      <CategoriesHeader />
+      <CategoriesBody />
+    </React.Fragment>
   )
 }
 

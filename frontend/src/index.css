@@ -11,11 +11,15 @@
     border-width: 1px !important;
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+}
+
 .data-\[open\=false\]\:border-foreground[data-open=true]:hover {
     @apply !border-global_silver
 }
 
-.min-h-unit-8{
+.min-h-unit-8 {
     height: 44px !important;
     width: 100%;
     border-radius: 6px !important;
