@@ -10,7 +10,7 @@ import { store } from './redux/store.ts'
 // styles
 import './index.css'
 import 'react-modern-drawer/dist/index.css'
-
+import 'react-phone-input-2/lib/style.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <NextUIProvider>

@@ -3,7 +3,63 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
     @apply bg-global_silver font-Noto;
+}
+
+
+
+
+
+/* scroll styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-global_green rounded-xl;
+
+}
+
+::-webkit-scrollbar-thumb {
+    @apply rounded-xl bg-global_silver;
+}
+
+.hide-text {
+    max-width: 100px;
+    display: inline-block;
+    white-space: nowrap;
+    height: 100%;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+/* react tel input  */
+.react-tel-input input {
+    width: 100% !important;
+    height: 42px !important;
+    border-radius: 0.5rem !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+
+}
+
+.react-tel-input input:focus {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-color: none !important;
+    outline: none !important;
+}
+
+.react-tel-input .flag-dropdown {
+    background: transparent !important;
+    border: none !important;
+}
+
+.react-tel-input .flag-dropdown .selected-flag {
+    border-end-end-radius: 0 !important;
+    border-start-start-radius: 0.5rem !important;
+    border-bottom-left-radius: 0.5rem !important;
+    @apply rounded-l-md !border-r
 }

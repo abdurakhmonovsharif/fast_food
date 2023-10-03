@@ -2,9 +2,9 @@ import Side from '../components/Side'
 import { Outlet } from 'react-router-dom'
 const Home = () => {
     return (
-        <div className='max-w-[2100px] mx-auto flex'>
+        <div className='flex relative max-w-[2300px] mx-auto'>
             <Side />
-            <main className=' w-[calc(100%-300px)]'>
+            <main className='w-[calc(100%-300px)]'>
                 <Outlet />
             </main>
         </div>

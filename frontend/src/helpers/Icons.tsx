@@ -1,8 +1,6 @@
-export const CheckCircleIcon = () => <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g id="check-circle">
-        <path id="Path" d="M17 8.06397V8.79997C16.998 12.3429 14.6659 15.4625 11.2683 16.4671C7.87077 17.4716 4.21716 16.1218 2.28881 13.1496C0.360458 10.1774 0.616736 6.29088 2.91866 3.59763C5.22059 0.904375 9.01982 0.045991 12.256 1.48797" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-        <path id="Path_2" d="M17.0001 2.40002L9.0001 10.408L6.6001 8.00802" strokeWidth="1.4" stroke='currentColor' strokeLinecap="round" strokeLinejoin="round" />
-    </g>
+export const CheckCircleIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 18 18" fill="none">
+    <path d="M17 8.06397V8.79997C16.998 12.3429 14.6659 15.4625 11.2683 16.4671C7.87077 17.4716 4.21716 16.1218 2.28881 13.1496C0.360458 10.1774 0.616736 6.29088 2.91866 3.59763C5.22059 0.904375 9.01982 0.045991 12.256 1.48797" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17.0001 2.40002L9.0001 10.408L6.6001 8.00802" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
 </svg>;
 export const ArchiveIcon = () => <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="archive">
@@ -104,6 +102,44 @@ export const RejectIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={1
 </svg>;
 export const CheckIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={16} height={12} viewBox="0 0 16 12" fill="none">
     <path d="M15 1L5.375 10.625L1 6.25" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-</svg>
-
-
+</svg>;
+export const TrashIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={17} height={18} viewBox="0 0 17 18" fill="none">
+    <path d="M1 4.20005H2.6H15.4" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14.5001 4.2C14.5001 3.8134 14.1867 3.5 13.8001 3.5C13.4135 3.5 13.1001 3.8134 13.1001 4.2H14.5001ZM3.3001 4.2C3.3001 3.8134 2.9867 3.5 2.6001 3.5C2.2135 3.5 1.9001 3.8134 1.9001 4.2H3.3001ZM4.3001 4.2C4.3001 4.5866 4.6135 4.9 5.0001 4.9C5.3867 4.9 5.7001 4.5866 5.7001 4.2H4.3001ZM10.7001 4.2C10.7001 4.5866 11.0135 4.9 11.4001 4.9C11.7867 4.9 12.1001 4.5866 12.1001 4.2H10.7001ZM13.1001 4.2V15.4H14.5001V4.2H13.1001ZM13.1001 15.4C13.1001 15.8971 12.6972 16.3 12.2001 16.3V17.7C13.4704 17.7 14.5001 16.6703 14.5001 15.4H13.1001ZM12.2001 16.3H4.2001V17.7H12.2001V16.3ZM4.2001 16.3C3.70304 16.3 3.3001 15.8971 3.3001 15.4H1.9001C1.9001 16.6703 2.92984 17.7 4.2001 17.7V16.3ZM3.3001 15.4V4.2H1.9001V15.4H3.3001ZM5.7001 4.2V2.6H4.3001V4.2H5.7001ZM5.7001 2.6C5.7001 2.10294 6.10304 1.7 6.6001 1.7V0.3C5.32984 0.3 4.3001 1.32975 4.3001 2.6H5.7001ZM6.6001 1.7H9.8001V0.3H6.6001V1.7ZM9.8001 1.7C10.2972 1.7 10.7001 2.10294 10.7001 2.6H12.1001C12.1001 1.32975 11.0704 0.3 9.8001 0.3V1.7ZM10.7001 2.6V4.2H12.1001V2.6H10.7001Z" fill="#2D3A45" />
+    <path d="M6.59995 8.19995V13" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9.7999 8.19995V13" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
+export const UserPlusIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={18} height={15} viewBox="0 0 18 15" fill="none">
+    <path d="M11.9091 14.0909V12.6364C11.9091 11.0297 10.6066 9.72729 9 9.72729H3.90909C2.30244 9.72729 1 11.0297 1 12.6364V14.0909" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path fillRule="evenodd" clipRule="evenodd" d="M6.4545 6.81818C8.06115 6.81818 9.36359 5.51574 9.36359 3.90909C9.36359 2.30244 8.06115 1 6.4545 1C4.84785 1 3.54541 2.30244 3.54541 3.90909C3.54541 5.51574 4.84785 6.81818 6.4545 6.81818Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14.8182 4.63647V9.00011" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17.0001 6.81823H12.6365" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
+export const PlacemarkIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
+    <path fillRule="evenodd" clipRule="evenodd" d="M12 23.7279L18.364 17.3639C21.8787 13.8492 21.8787 8.15073 18.3639 4.63603C14.8492 1.12132 9.15077 1.12132 5.63605 4.63603C2.12134 8.15073 2.12131 13.8492 5.636 17.3639L12 23.7279ZM14 10.9999C14 12.1045 13.1046 12.9999 12 12.9999C10.8954 12.9999 10 12.1045 10 10.9999C10 9.89535 10.8954 8.99992 12 8.99992C13.1046 8.99992 14 9.89535 14 10.9999Z" fill="#FA2738" />
+</svg>;
+export const SearchIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 18 18" fill="none">
+    <path fillRule="evenodd" clipRule="evenodd" d="M8.11111 15.2222C12.0385 15.2222 15.2222 12.0385 15.2222 8.11111C15.2222 4.18375 12.0385 1 8.11111 1C4.18375 1 1 4.18375 1 8.11111C1 12.0385 4.18375 15.2222 8.11111 15.2222Z" stroke="#8D9BA8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17 17L13.1333 13.1333" stroke="#8D9BA8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;
+export const FilterIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={48} height={48} viewBox="0 0 48 48" fill="none">
+    <rect width={48} height={48} rx={24} fill="#EDEFF3" />
+    <g filter="url(#filter0_d_0_556)">
+        <rect x={6} y={6} width={36} height={36} rx={18} fill="white" />
+    </g>
+    <path fillRule="evenodd" clipRule="evenodd" d="M32 17H16L22.4 24.568V29.8L25.6 31.4V24.568L32 17V17Z" stroke="#8D9BA8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <defs>
+        <filter id="filter0_d_0_556" x={4} y={6} width={40} height={40} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity={0} result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feOffset dy={2} />
+            <feGaussianBlur stdDeviation={1} />
+            <feColorMatrix type="matrix" values="0 0 0 0 0.682122 0 0 0 0 0.691567 0 0 0 0 0.710456 0 0 0 0.314986 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_556" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_556" result="shape" />
+        </filter>
+    </defs>
+</svg>;
+export const PenIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16" fill="none">
+    <path fillRule="evenodd" clipRule="evenodd" d="M11.5 1.7C12.0002 1.19983 12.7292 1.00449 13.4124 1.18756C14.0957 1.37064 14.6294 1.90432 14.8124 2.58756C14.9955 3.27081 14.8002 3.99983 14.3 4.5L4.85 13.95L1 15L2.05 11.15L11.5 1.7Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+</svg>;

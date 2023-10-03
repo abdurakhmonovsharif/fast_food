@@ -1,5 +1,5 @@
 import React from 'react'
-import bg_food_image from '/assets/images/login_image.png'
+import bg_food_image from '/assets/images/login_image.webp'
 import { useNavigate } from 'react-router-dom'
 const Login = () => {
     const [hoverInput, setHoverInput] = React.useState({ username: false, password: false });
@@ -12,7 +12,7 @@ const Login = () => {
     const navigate = useNavigate()
     const handleSignIn = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        navigate("/dashboard")
+        navigate("/dashboard/orders")
     }
     return (
         <main className='max-w-[2100px] mx-auto'>

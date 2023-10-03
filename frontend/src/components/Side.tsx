@@ -61,7 +61,7 @@ const Side = () => {
         navigate("/login")
     }
     return (
-        <aside className="w-[300px] max-w-[300px] py-7 flex flex-col justify-between h-screen shadow-md bg-white">
+        <aside className="w-[300px] max-w-[300px] py-7 flex flex-col justify-between h-[100dvh] shadow-md bg-white">
             <div className="flex items-center gap-5 px-6">
                 <Avatar src={avatar_image} className='w-[70px] h-[70px]' />
                 <div >
@@ -82,7 +82,7 @@ const Side = () => {
                     )
                 }
             </div>
-            <div onClick={logOut} className='group  py-3 flex items-center px-5 gap-[15px] rounded-e-md cursor-pointer'>
+            <div onClick={logOut} className='py-3 flex items-center px-5 gap-[15px] rounded-e-md cursor-pointer'>
                 <div className='bg-global_silver/50 p-2 group-hover:bg-transparent rounded-md'>
                     <LogOutIcon />
                 </div>
