@@ -1,7 +1,12 @@
 import { useSearchParams } from 'react-router-dom';
-import OrdersCard from './OrdersCard'
+import OrdersCardByCol from './OrdersCardByCol'
 import OrdersByAllStatus from './OrdersByAllStatus';
-export const orderCardArray: OrderType[] = [
+import React from 'react';
+import { useGetOrderByColumsQuery } from '../../redux/rtq/orders.api';
+import { Spinner } from '@nextui-org/react';
+
+// temporarily in any type
+export const orderCardArray: any = [
   {
     id: 'd34127e7-06dd-4a7f-ae1c-35fc103f67a1',
     filial: `Max Way
@@ -93,22 +98,67 @@ Maksim Gorkiy`,
     order_number: 6
   },
 ];
-
+interface OrderStatusesType {
+  [key: string]: {
+    label: string;
+    key: string;
+  };
+}
+export const orderStatuses: OrderStatusesType = {
+  pending: {
+    label: "Yangi",
+    key: "pending"
+  },
+  processing: {
+    label: "Qabul qilingan",
+    key: "processing"
+  },
+  shipped: {
+    label: "Jo'natilgan",
+    key: "shipped"
+  },
+  delivered: {
+    label: "Yetkazilgan",
+    key: "delivered"
+  }
+}
 const OrdersBody = () => {
   const [searchParams] = useSearchParams();
   const flex = searchParams.get("flex") || "col";
   const status = searchParams.get("status") || "Yangi";
+
+  // get orderByColums
+  const { data, isLoading } = useGetOrderByColumsQuery();
+  const filteredOrderCol: any = data && Object.keys(data?.data).filter(item1 => item1 === status).map(key => data.data[key])[0]
   return (
-    <article id='article' className={`px-10  py-5 space-y-3  h-[calc(100vh-80px)] overflow-y-auto  flex flex-col items-center`}>
+    <article
+      id='article'
+      className={`px-10 py-5 space-y-3 h-[calc(100vh-80px)] overflow-y-auto  flex flex-col items-center`}>
       {
-        flex === "col" ?
-          orderCardArray.find(item => item.status === status) ?
-            orderCardArray.filter(item => item.status === status).map((item, index) => <OrdersCard key={index} {...item} />)
-            :
-            `Ma'lumotlar topilmadi!`
+        isLoading ?
+          <div className='flex items-center justify-center h-full w-full'>
+            <Spinner size='lg' color='success' />
+          </div>
           :
-          <OrdersByAllStatus />
+          <React.Fragment>
+            {/* col order cards  */}
+            {
+              flex === "col" ?
+                filteredOrderCol ?
+                  filteredOrderCol?.map((item: OrderType, index: number) => <OrdersCardByCol
+                    key={index} {...item}
+                  />
+                  )
+                  : `Ma'lumotlar topilmadi!`
+                :
+                <React.Fragment>
+                  {/* row order cards  */}
+                  < OrdersByAllStatus />
+                </React.Fragment>
+            }
+          </React.Fragment>
       }
+
     </article>
   )
 }

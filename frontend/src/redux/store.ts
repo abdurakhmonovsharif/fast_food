@@ -1,14 +1,14 @@
+import { ordersApi } from "./rtq/orders.api";
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import user from "./reducers/user";
-import OrdersState from "./reducers/OrdersState";
 
 export const store = configureStore({
   reducer: {
-    orders: OrdersState,
-    user: user,
+    [ordersApi.reducerPath]: ordersApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
+    ordersApi.middleware
+  ),
 });
 
 setupListeners(store.dispatch);

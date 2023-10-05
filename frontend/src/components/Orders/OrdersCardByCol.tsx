@@ -2,24 +2,26 @@
 import { BookMark, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from "../../helpers/Icons"
 // components from next ui
 import { Button } from '@nextui-org/react'
-const OrdersCard = ({ lastTime, user, operator, filial, delivery_sum, sum, order_number }: OrderType) => {
+const OrdersCardByCol = ({ operator, orderCost, shippingCost, orderNumber, customer, branch }: OrderType) => {
+    console.log(operator, orderCost, shippingCost, orderNumber);
     function calculateTotalSum(): string {
-        const d_sum = Number(delivery_sum?.replace(",", "") || 0);
-        const order_sum = Number(sum?.replaceAll(",", "") || 0);
-        const total_sum = d_sum + order_sum;
-        return total_sum.toLocaleString("en-US")
+        // const d_sum = Number(delivery_sum?.replace(",", "") || 0);
+        // const order_sum = Number(sum?.replaceAll(",", "") || 0);
+        // const total_sum = d_sum + order_sum;
+        // return total_sum.toLocaleString("en-US")
+        return 'null'
     }
     return (
         <div className='h-[150px] cursor-pointer bg-white grid grid-cols-4 grid-rows-1 rounded-md shadow-md hover:scale-[1.02] transition-all duration-250'>
             <div className="border-r-2 justify-center py-5 flex items-start gap-4">
                 <div className="flex flex-col gap-[19px]">
                     <div className="bg-global_green  text-center text-white rounded-full py-[10px] w-24">
-                        <span className="text-xl font-medium cursor-text">{order_number}</span>
+                        <span className="text-xl font-medium cursor-text">{orderNumber}</span>
                     </div>
                     <hr className="w-24" />
                     <div className="flex items-center w-24 justify-center gap-3">
                         <ClockIcon />
-                        <span className="text-global_text_color text-xl cursor-text">{lastTime}</span>
+                        <span className="text-global_text_color text-xl cursor-text">{'00:01'}</span>
                     </div>
                 </div>
                 <Button isIconOnly className=" bg-global_silver p-3 rounded-full mt-0.5">
@@ -32,12 +34,12 @@ const OrdersCard = ({ lastTime, user, operator, filial, delivery_sum, sum, order
                         <UserIcon />
                     </div>
                     <p className="text-xl font-medium cursor-text">
-                        {user?.full_name}
+                        {'abdurakhmonov sharif'}
                     </p>
                 </div>
                 <div className="flex gap-[19px]  items-center justify-center w-full">
                     <CallIcon />
-                    <p className="text-sm  font-medium text-global_text_color cursor-text">{user?.phone_number}</p>
+                    <p className="text-sm  font-medium text-global_text_color cursor-text">{"+998 (93) 143-44-13"}</p>
                 </div>
             </div>
             <div className="border-r-2 flex flex-col justify-center py-5 px-5 gap-5 
@@ -48,13 +50,13 @@ const OrdersCard = ({ lastTime, user, operator, filial, delivery_sum, sum, order
                             <div>
                                 <PasteIcon />
                             </div>
-                            <p className="text-sm text-global_text_color break-all hide-text cursor-text">{sum} UZS</p>
+                            <p className="text-sm text-global_text_color break-all hide-text cursor-text">{orderCost} UZS</p>
                         </div>
                         <div className="flex items-center justify-start gap-[12px] ">
                             <div>
                                 <TrackIcon />
                             </div>
-                            <p className="text-sm text-global_text_color cursor-text">{delivery_sum} UZS</p>
+                            <p className="text-sm text-global_text_color cursor-text">{shippingCost} UZS</p>
                         </div>
                     </div>
                     <div className="flex justify-center items-center gap-2">
@@ -76,7 +78,7 @@ const OrdersCard = ({ lastTime, user, operator, filial, delivery_sum, sum, order
                 </div>
                 <div>
                     <p className="text-[11px] text-global_text_color/30">Filial:</p>
-                    <p className="text-sm font-semibold max-w-[110px] cursor-text">{filial}</p>
+                    <p className="text-sm font-semibold max-w-[110px] cursor-text">{branch?.nameUz}</p>
                 </div>
                 <div className="absolute flex flex-col gap-3 -right-5">
                     <Button isIconOnly className="rounded-full bg-white border-4 border-global_silver">
@@ -91,4 +93,4 @@ const OrdersCard = ({ lastTime, user, operator, filial, delivery_sum, sum, order
     )
 }
 
-export default OrdersCard
+export default OrdersCardByCol

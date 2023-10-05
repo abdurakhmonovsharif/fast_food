@@ -1,4 +1,4 @@
-import { Avatar, Button, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react'
+import {  Button, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react'
 import { MapPinIcon, PenIcon, TrashIcon } from '../../helpers/Icons';
 const rows = [
     {

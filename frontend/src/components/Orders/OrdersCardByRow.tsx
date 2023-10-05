@@ -3,7 +3,7 @@ import { BookMark, CheckIcon, ClockIcon, RejectIcon, UserIcon } from "../../help
 
 // components from next ui
 import { Button } from "@nextui-org/react"
-const OrdersCardByStatus = ({ filial, id, lastTime, status, operator, delivery_sum, sum, user, order_number, handleClick, handleDragStart }: OrderType) => {
+const OrdersCardByRow = ({ filial, id, lastTime, status, operator, delivery_sum, sum, user, order_number, handleClick, handleDragStart }: OrderType) => {
     const item: OrderType = {
         filial, delivery_sum, id, lastTime, operator, status, sum, user, order_number
     }
@@ -81,4 +81,4 @@ const OrdersCardByStatus = ({ filial, id, lastTime, status, operator, delivery_s
     )
 }
 
-export default OrdersCardByStatus
+export default OrdersCardByRow

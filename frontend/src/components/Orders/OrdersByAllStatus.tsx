@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import OrdersCardByStatus from './OrdersCardByStatus'
 import MyDrawwer from '../../helpers/MyDrawwer'
 import { orderCardArray } from './OrdersBody'
 import { CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from '../../helpers/Icons';
 import { Button } from '@nextui-org/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import OrdersCardByCol from './OrdersCardByRow';
 // demo arrays 
 const statusArray = [
   {
@@ -33,17 +33,17 @@ const statusArray = [
   },
 ];
 const OrdersByAllStatus = () => {
-  const [orderCardArrayState, setOrderCardArrayState] = useState(orderCardArray)
+  const [orderCardArrayState, setOrderCardArrayState] = useState<any[]>(orderCardArray)
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const flex = searchParams.get("flex")
   const view = searchParams.get("view");
   const draggingId = searchParams.get("draggingId");
-  const status = searchParams.get("status") || "Yangi";
+  const status = searchParams.get("status") || "pending";
 
   // drawwer item which card selected 
-  const drawwerItem = orderCardArray.find(item => item.id === view) as OrderType
+  const drawwerItem = orderCardArray.find((item: any) => item.id === view)
 
   const articleElement = document.getElementById('article');
 
@@ -115,7 +115,7 @@ const OrdersByAllStatus = () => {
               </div>
               {
                 orderCardArrayState.filter(item => item.status === statusItem.title)
-                  .map(item => <OrdersCardByStatus
+                  .map(item => <OrdersCardByCol
                     handleDragStart={handleDragStart}
                     key={item.id}
                     {...item}

@@ -17,10 +17,8 @@ import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 
 // images
 import PlacemarkIcon from '/assets/images/map_pin.svg'
+import { orderStatuses } from "./OrdersBody";
 // demo arrays 
-const statusArray = [
-    "Yangi", "Qabul qilingan", "Jo'natilgan", "Yopilgan"
-]
 const categoriesArray = [
     "Burger", "Lavash", "Garniyer", "Salatlar", "Ichimliklar", "Sous"
 ]
@@ -28,7 +26,7 @@ const OrdersHeader = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const flex = searchParams.get("flex") || "col";
-    const status = searchParams.get("status") || "Yangi";
+    const status = searchParams.get("status") || "pending";
     // states
     const [drawwerVisible, setDrawwerVisible] = React.useState(false);
     const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
@@ -49,8 +47,8 @@ const OrdersHeader = () => {
     useEffect(() => {
         if (flex !== "row" && flex !== "col") {
             navigate(-1);
-        } else if (!statusArray.includes(status)) {
-            navigate(`?flex=${flex}&status=Yangi`)
+        } else if (!Object.values(orderStatuses).find(item => item.key === status)) {
+            navigate(`?flex=${flex}&status=pending`)
         } else {
             navigate(`?flex=${flex}&status=${status}`)
         }
@@ -69,8 +67,8 @@ const OrdersHeader = () => {
                 <div className=' pr-2 h-full w-full max-w-5xl flex items-center  whitespace-nowrap'>
                     <div className={` ${flex === "row" && 'opacity-40'}  flex items-center justify-between w-full  bg-global_silver h-[48] rounded-3xl p-[6px]   space-x-1`}>
                         {
-                            statusArray.map((item: string, index: number) => <Button key={index} onClick={() => changeStatus(item)} disabled={flex === "row"} className={`${status === item ? 'bg-white shadow-md' : 'bg-transparent'}  w-full py-[5px] rounded-3xl `}>
-                                <span className='text-[14px]'>{item}</span>
+                            Object.values(orderStatuses).map((item, index: number) => <Button key={index} onClick={() => changeStatus(item.key)} disabled={flex === "row"} className={`${status === item.key ? 'bg-white shadow-md' : 'bg-transparent'}  w-full py-[5px] rounded-3xl `}>
+                                <span className='text-[14px]'>{item.label}</span>
                             </Button>)
                         }
                     </div>
