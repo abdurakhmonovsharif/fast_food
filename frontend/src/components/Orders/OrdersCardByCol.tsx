@@ -60,7 +60,7 @@ const OrdersCardByCol = ({ operator, orderCost, shippingCost, orderNumber, custo
                         </div>
                     </div>
                     <div className="flex justify-center items-center gap-2">
-                        <div className="bg-[#14E5E4] p-1.5 rounded-full"></div>
+                        <div className="bg-[#14E5E4] p-1.5 rounded-full"></div>     
                         <p className="text-xs">Payme</p>
                     </div>
                 </div>

@@ -28,3 +28,42 @@ type ClientType = {
   full_name?: string;
   phone_number?: string;
 };
+type ResponseGetCategory = {
+  content: CategoryType[];
+  pageable: Pageable;
+};
+type Pageable = {
+  pageNumber: number;
+  pageSize: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
+  };
+  offset: number;
+  paged: boolean;
+  unpaged: boolean;
+};
+
+type Page = {
+  pageable: Pageable;
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
+  };
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
+};
+type CategoryType = {
+  id?: string;
+  nameRu?: string;
+  nameUz?: string;
+  children?: [];
+};
