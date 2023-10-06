@@ -9,8 +9,15 @@ export const ordersApi = createApi({
     // headers: baseQueryHeaders,
   }),
   endpoints: (builder) => ({
-    getOrderByColums: builder.query<ResponeOrderByColType, void>({
-      query: () => `order/byColumns`,
+    getOrderByColums: builder.query<
+      ResponeOrderByColType,
+      { status: string; page: string; size: string }
+    >({
+      query: ({ status, page, size }) =>
+        `order/byColumns?status=${status}&page=${page}&size=${size}`,
+    }),
+    getOrderByRow: builder.query<any, void>({
+      query: () => `order/byRow`,
     }),
     // addTodo: builder.mutation<Todo, Partial<Todo>>({
     //     query: (newTodo) => ({
@@ -36,4 +43,4 @@ export const ordersApi = createApi({
   }),
 });
 // , useAddTodoMutation, useDeleteTodoMutation, useUpdateTodoMutation
-export const { useGetOrderByColumsQuery } = ordersApi;
+export const { useGetOrderByColumsQuery, useGetOrderByRowQuery } = ordersApi;

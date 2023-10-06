@@ -1,9 +1,9 @@
 // helpers
-import { BookMark, CheckIcon, ClockIcon, RejectIcon, UserIcon } from "../../helpers/Icons"
+import { BookMark, CheckIcon, ClockIcon, RejectIcon, UserIcon } from "../../../helpers/Icons"
 
 // components from next ui
 import { Button } from "@nextui-org/react"
-const OrdersCardByRow = ({ filial, id, lastTime, status, operator, delivery_sum, sum, user, order_number, handleClick, handleDragStart }: any) => {
+const RowCard = ({ filial, id, lastTime, status, operator, delivery_sum, sum, user, order_number, handleClick, handleDragStart }: any) => {
     const item: any = {
         filial, delivery_sum, id, lastTime, operator, status, sum, user, order_number
     }
@@ -81,4 +81,4 @@ const OrdersCardByRow = ({ filial, id, lastTime, status, operator, delivery_sum,
     )
 }
 
-export default OrdersCardByRow
+export default RowCard

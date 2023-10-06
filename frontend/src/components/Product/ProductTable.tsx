@@ -111,6 +111,7 @@ const ProductTable = () => {
     // const hasMore = page > 9;
     return (
         <Table
+            aria-label='My table'
             isHeaderSticky
             className='px-3'
             classNames={{

@@ -6,10 +6,10 @@ type Branch = {
 };
 type OrderType = {
   id?: string;
-  operator?: null;
+  operator?: ClientType;
   orderItems?: null;
   orderCost?: number;
-  customer?: null;
+  customer?: ClientType;
   shippingCost?: number;
   orderNumber?: null;
   branch?: Branch;
@@ -17,21 +17,38 @@ type OrderType = {
   handleDragStart?: (id: string) => void;
 };
 
-type ResponeOrderByColType = {
+type ResponeOrderByRowType = {
   success: boolean;
   data: {
     [key: string]: OrderType[];
   };
   message: string;
 };
-type ClientType = {
-  full_name?: string;
-  phone_number?: string;
+type ResponeOrderByColType = {
+  success: boolean;
+  data: ResponseOrderColDataType;
+  pageable: Pageable;
+  message: string;
 };
+type ResponseOrderColDataType = {
+  content: OrderType[];
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+  number: number;
+  numberOfElements: number;
+};
+
+type User = {
+  name?: string;
+  phoneNumber?: string;
+};
+
 type ResponseGetCategory = {
   content: CategoryType[];
   pageable: Pageable;
 };
+
 type Pageable = {
   pageNumber: number;
   pageSize: number;

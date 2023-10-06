@@ -1,15 +1,15 @@
 // helpers
-import { BookMark, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from "../../helpers/Icons"
+import { BookMark, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from "../../../helpers/Icons"
 // components from next ui
 import { Button } from '@nextui-org/react'
-const OrdersCardByCol = ({ operator, orderCost, shippingCost, orderNumber, customer, branch }: OrderType) => {
-    console.log(operator, orderCost, shippingCost, orderNumber);
+const ColCard = ({ operator, orderCost, shippingCost, orderNumber, customer, branch }: OrderType) => {
     function calculateTotalSum(): string {
-        // const d_sum = Number(delivery_sum?.replace(",", "") || 0);
-        // const order_sum = Number(sum?.replaceAll(",", "") || 0);
-        // const total_sum = d_sum + order_sum;
-        // return total_sum.toLocaleString("en-US")
-        return 'null'
+        if (shippingCost && orderCost) {
+            const total_sum = shippingCost + orderCost;
+            return total_sum.toLocaleString("en-US")
+        } else {
+            return "0"
+        }
     }
     return (
         <div className='h-[150px] cursor-pointer bg-white grid grid-cols-4 grid-rows-1 rounded-md shadow-md hover:scale-[1.02] transition-all duration-250'>
@@ -34,12 +34,12 @@ const OrdersCardByCol = ({ operator, orderCost, shippingCost, orderNumber, custo
                         <UserIcon />
                     </div>
                     <p className="text-xl font-medium cursor-text">
-                        {'abdurakhmonov sharif'}
+                        {customer?.name}
                     </p>
                 </div>
                 <div className="flex gap-[19px]  items-center justify-center w-full">
                     <CallIcon />
-                    <p className="text-sm  font-medium text-global_text_color cursor-text">{"+998 (93) 143-44-13"}</p>
+                    <p className="text-sm  font-medium text-global_text_color cursor-text">{customer?.phoneNumber}</p>
                 </div>
             </div>
             <div className="border-r-2 flex flex-col justify-center py-5 px-5 gap-5 
@@ -50,17 +50,17 @@ const OrdersCardByCol = ({ operator, orderCost, shippingCost, orderNumber, custo
                             <div>
                                 <PasteIcon />
                             </div>
-                            <p className="text-sm text-global_text_color break-all hide-text cursor-text">{orderCost} UZS</p>
+                            <p className="text-sm text-global_text_color break-all hide-text cursor-text">{orderCost?.toLocaleString("en-US")} UZS</p>
                         </div>
                         <div className="flex items-center justify-start gap-[12px] ">
                             <div>
                                 <TrackIcon />
                             </div>
-                            <p className="text-sm text-global_text_color cursor-text">{shippingCost} UZS</p>
+                            <p className="text-sm text-global_text_color cursor-text">{shippingCost?.toLocaleString("en-US")} UZS</p>
                         </div>
                     </div>
                     <div className="flex justify-center items-center gap-2">
-                        <div className="bg-[#14E5E4] p-1.5 rounded-full"></div>     
+                        <div className="bg-[#14E5E4] p-1.5 rounded-full"></div>
                         <p className="text-xs">Payme</p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ const OrdersCardByCol = ({ operator, orderCost, shippingCost, orderNumber, custo
             <div className="relative flex items-start justify-cetner pl-[35px] py-5 flex-col">
                 <div>
                     <p className="text-[11px] text-global_text_color/30">Operator:</p>
-                    <p className="text-sm font-semibold cursor-text">{operator}</p>
+                    <p className="text-sm font-semibold cursor-text">{operator?.name}</p>
                 </div>
                 <div>
                     <p className="text-[11px] text-global_text_color/30">Filial:</p>
@@ -93,4 +93,4 @@ const OrdersCardByCol = ({ operator, orderCost, shippingCost, orderNumber, custo
     )
 }
 
-export default OrdersCardByCol
+export default ColCard

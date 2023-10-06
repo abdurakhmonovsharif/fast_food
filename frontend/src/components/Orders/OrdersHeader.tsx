@@ -1,6 +1,5 @@
 // react 
 import React from "react";
-import { useEffect } from 'react'
 
 // components from next ui
 import { Button } from '@nextui-org/react'
@@ -9,7 +8,7 @@ import { Button } from '@nextui-org/react'
 import { FilterIcon1, FilterIcon2, PlusIcon, TrashIcon, UserPlusIcon, } from '../../helpers/Icons'
 
 // react router dom
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import MyDrawwer from "../../helpers/MyDrawwer";
 import ProductCard from "./ProductCard";
 import PhoneInput from "react-phone-input-2";
@@ -18,24 +17,31 @@ import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 // images
 import PlacemarkIcon from '/assets/images/map_pin.svg'
 import { orderStatuses } from "./OrdersBody";
+
 // demo arrays 
 const categoriesArray = [
     "Burger", "Lavash", "Garniyer", "Salatlar", "Ichimliklar", "Sous"
 ]
 const OrdersHeader = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [searchParams] = useSearchParams();
     const flex = searchParams.get("flex") || "col";
     const status = searchParams.get("status") || "pending";
+
     // states
     const [drawwerVisible, setDrawwerVisible] = React.useState(false);
     const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
     const changeViewStatus = (flex: string) => {
-        navigate(`?flex=${flex}&status=${status}`)
+        navigate(`?flex=${flex}`)
     }
     const changeStatus = (status: string) => {
-        navigate(`?flex=${flex}&status=${status}`)
+        searchParams.set("status", status);
+        navigate({
+            pathname: location.pathname,
+            search: searchParams.toString(),
+        });
     }
     const changeCategory = (selectedCategory: string) => {
         const findedIndex = categoriesArray.indexOf(selectedCategory)
@@ -44,15 +50,6 @@ const OrdersHeader = () => {
 
     // toggleDrawer 
     const toggleDrawer = (status: boolean) => (setDrawwerVisible(status))
-    useEffect(() => {
-        if (flex !== "row" && flex !== "col") {
-            navigate(-1);
-        } else if (!Object.values(orderStatuses).find(item => item.key === status)) {
-            navigate(`?flex=${flex}&status=pending`)
-        } else {
-            navigate(`?flex=${flex}&status=${status}`)
-        }
-    }, [flex, status]);
 
     return (
         <React.Fragment>

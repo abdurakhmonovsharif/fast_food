@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import MyDrawwer from '../../helpers/MyDrawwer'
-import { orderCardArray } from './OrdersBody'
-import { CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from '../../helpers/Icons';
+import MyDrawwer from '../../../helpers/MyDrawwer'
+import { CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from '../../../helpers/Icons';
 import { Button } from '@nextui-org/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import OrdersCardByCol from './OrdersCardByRow';
+import RowCard from './RowCard';
+import { useGetOrderByColumsQuery, useGetOrderByRowQuery } from '../../../redux/rtq/orders.api';
 // demo arrays 
 const statusArray = [
   {
@@ -32,8 +32,8 @@ const statusArray = [
     amount: '10,230,000 UZS',
   },
 ];
-const OrdersByAllStatus = () => {
-  const [orderCardArrayState, setOrderCardArrayState] = useState<any[]>(orderCardArray)
+const OrdersByRow = () => {
+  const [orderCardArrayState, setOrderCardArrayState] = useState([])
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -43,7 +43,7 @@ const OrdersByAllStatus = () => {
   const status = searchParams.get("status") || "pending";
 
   // drawwer item which card selected 
-  const drawwerItem = orderCardArray.find((item: any) => item.id === view)
+  const drawwerItem: any = {}
 
   const articleElement = document.getElementById('article');
 
@@ -69,13 +69,13 @@ const OrdersByAllStatus = () => {
   };
   const onDrop = (e: React.DragEvent<HTMLDivElement>, newStatus: string) => {
     e.preventDefault();
-    const updatedItems = orderCardArrayState.map((item) => {
-      if (item.id === draggingId) {
-        return { ...item, status: newStatus };
-      }
-      return item;
-    });
-    setOrderCardArrayState(updatedItems);
+    // const updatedItems = orderCardArrayState.map((item) => {
+    //   if (item.id === draggingId) {
+    //     return { ...item, status: newStatus };
+    //   }
+    //   return item;
+    // });
+    // setOrderCardArrayState(updatedItems);
     navigate(-1)
   };
 
@@ -86,15 +86,18 @@ const OrdersByAllStatus = () => {
   }
   const calculateTotalSumByStatus = (status_name: string) => {
     let total_sum = 0
-    orderCardArrayState.filter(item => item.status === status_name).map(item => {
-      total_sum += calculateTotalSum(item.delivery_sum, item.sum)
-    })
+    // orderCardArrayState.filter(item => item.status === status_name).map(item => {
+    //   total_sum += calculateTotalSum(item.delivery_sum, item.sum)
+    // })
     return total_sum.toLocaleString("en-US");
   }
+  // get orderByColums
+  const { data, isLoading } = useGetOrderByRowQuery();
+  console.log(data);
 
   return (
     <React.Fragment>
-      <div className="grid grid-rows-1 grid-cols-4 gap-[14px] py-[11px]">
+      <div className="grid grid-rows-1 grid-cols-4 gap-[14px] py-[11px] px-10">
         {
           statusArray.map(statusItem => <React.Fragment
             key={statusItem.title}>
@@ -106,22 +109,22 @@ const OrdersByAllStatus = () => {
               <div className='flex items-center gap-3'>
                 <p className='text-sm text-global_text_color/80 font-medium'>{statusItem.title}</p>
                 <div className='text-center text-global_text_color text-xs bg-white p-[1px] px-2.5 rounded'>
-                  <span>{orderCardArrayState.filter(item => item.status === statusItem.title).length}</span>
+                  <span>{ }</span>
                 </div>
               </div>
               <div className='w-full bg-white py-3 pl-4 pr-5 rounded-md flex items-center justify-between gap-[38px]'>
                 <div className={`bg-${statusItem.color} p-1.5 rounded-full`}></div>
                 <p className='text-global_text_color font-bold text-lg whitespace-nowrap'>{calculateTotalSumByStatus(statusItem.title)} UZS</p>
               </div>
-              {
+              {/* {
                 orderCardArrayState.filter(item => item.status === statusItem.title)
-                  .map(item => <OrdersCardByCol
+                  .map(item => <RowCard
                     handleDragStart={handleDragStart}
                     key={item.id}
                     {...item}
                     handleClick={handleClick} />
                   )
-              }
+              } */}
             </div>
           </React.Fragment>)
         }
@@ -219,4 +222,4 @@ const OrdersByAllStatus = () => {
   )
 }
 
-export default OrdersByAllStatus
+export default OrdersByRow

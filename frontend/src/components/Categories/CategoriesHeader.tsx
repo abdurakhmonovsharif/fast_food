@@ -1,31 +1,68 @@
 import { Button, Select, SelectItem } from '@nextui-org/react';
-import React from 'react'
+import React, { useState } from 'react'
 import { PlusIcon, SearchIcon } from '../../helpers/Icons';
 import MyDrawwer from '../../helpers/MyDrawwer'
-import { useAddCategoryMutation, useGetCategoryQuery } from '../../redux/rtq/category.api';
+import { useAddCategoryMutation, useGetCategoryQuery, useUpdateCategoryMutation } from '../../redux/rtq/category.api';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCategoryState } from '../../redux/reducers/category.reducer';
 const CategoriesHeader = () => {
-    // states
+    // redux 
+    const dispatch = useDispatch();
+    const categoryState = useSelector((state: any) => state.category);
+
+    // states and refs
     const [drawwerVisible, setDrawwerVisible] = React.useState(false);
+    const [nameUz, setNameUz] = useState("")
+    const [nameRu, setNameRu] = useState("")
     // toggleDrawer 
-    const toggleDrawer = (status: boolean) => setDrawwerVisible(status);
+    const toggleDrawer = (status: boolean) => {
+        setDrawwerVisible(status);
+
+        // if isEditing clear isEditItem to null
+        if (categoryState.isEditItem && !status) {
+            dispatch(clearCategoryState({ ...categoryState, isEditItem: null }))
+        }
+    };
+
+    // if which one item is editing open drawwer
+    React.useEffect(() => {
+        if (categoryState.isEditItem != null) {
+            toggleDrawer(true)
+            // fill in the blanks with values
+            const { nameUz, nameRu } = categoryState.isEditItem;
+            setNameRu(nameRu)
+            setNameUz(nameUz)
+        }
+    }, [categoryState.isEditItem?.nameUz])
+
+    // update item
+    const [updateCategory] = useUpdateCategoryMutation()
 
     // add category
     const { refetch } = useGetCategoryQuery()
     const [addCategory] = useAddCategoryMutation();
     const handleAddCategory = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        const target = e.target as typeof e.target & {
-            nameUz: { value: string };
-            nameRu: { value: string };
-        };
-        addCategory({
-            nameUz: target.nameUz.value,
-            nameRu: target.nameRu.value
-        }).then(() => {
-            refetch()
-            toggleDrawer(false)
-        })
-
+        const editingItem: CategoryType = categoryState.isEditItem;
+        const newDate: CategoryType = { id: editingItem.id, nameRu, nameUz, children: editingItem.children }
+        // editing
+        if (categoryState.isEditItem) {
+            updateCategory(newDate).then(() => {
+                refetch()
+                toggleDrawer(false)
+            })
+        } else {
+            // creating
+            addCategory({
+                nameUz,
+                nameRu
+            }).then(() => {
+                refetch()
+                toggleDrawer(false);
+            })
+        }
+        setNameUz("");
+        setNameRu("")
     }
     return (
         <nav className='h-[80px]  bg-white flex items-center justify-start gap-2 border-l-2 border-global_silver '>
@@ -49,13 +86,13 @@ const CategoriesHeader = () => {
                         <div className="space-y-[5px]">
                             <label htmlFor="catogory_name_uz_input" className="text-global_text_color/60 text-xs">Kategoriya nomi uz</label>
                             <div className="flex items-center h-full border rounded-md">
-                                <input name='nameUz' type="text" id="catogory_name_uz_input" className="py-3 pl-5 rounded-md w-full outline-none text-global_text_color text-xs" />
+                                <input value={nameUz} onChange={(e) => setNameUz(e.target.value)} name='nameUz' type="text" id="catogory_name_uz_input" className="py-3 pl-5 rounded-md w-full outline-none text-global_text_color text-xs" />
                             </div>
                         </div>
                         <div className="space-y-[5px]">
                             <label htmlFor="catogory_name_ru_input" className="text-global_text_color/60 text-xs">Kategoriya nomi ru</label>
                             <div className="flex items-center h-full border rounded-md">
-                                <input name='nameRu' type="text" id="catogory_name_ru_input" className="py-3 pl-5 rounded-md w-full outline-none text-global_text_color text-xs" />
+                                <input value={nameRu} onChange={(e) => setNameRu(e.target.value)} name='nameRu' type="text" id="catogory_name_ru_input" className="py-3 pl-5 rounded-md w-full outline-none text-global_text_color text-xs" />
                             </div>
                         </div>
                         <div className="space-y-[5px]">

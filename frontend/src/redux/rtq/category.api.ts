@@ -29,18 +29,18 @@ export const categoryApi = createApi({
         },
       }),
     }),
-    // updateTodo: builder.mutation<void, { id: string, data: Partial<Todo> }>({
-    //     query: ({ id, data }) => ({
-    //         url: `todos/${id}`,
-    //         method: 'PUT',
-    //         body: data,
-    //     }),
-    // }),
+    updateCategory: builder.mutation<void, Partial<CategoryType>>({
+      query: (data) => ({
+        url: `category`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
   }),
 });
-// , useAddTodoMutation, useDeleteTodoMutation, useUpdateTodoMutation
 export const {
   useGetCategoryQuery,
   useAddCategoryMutation,
   useDeleteCategoryMutation,
+  useUpdateCategoryMutation,
 } = categoryApi;
