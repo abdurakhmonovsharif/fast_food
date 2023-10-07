@@ -18,11 +18,12 @@ type OrderType = {
 };
 
 type ResponeOrderByRowType = {
-  success: boolean;
-  data: {
-    [key: string]: OrderType[];
-  };
-  message: string;
+  success?: boolean;
+  data: RowDataType[];
+  message?: string;
+};
+type RowDataType = {
+  [key: string]: OrderType[];
 };
 type ResponeOrderByColType = {
   success: boolean;

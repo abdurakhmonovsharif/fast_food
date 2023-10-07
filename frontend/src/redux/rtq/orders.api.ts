@@ -33,14 +33,17 @@ export const ordersApi = createApi({
     //         body: { user_id }
     //     }),
     // }),
-    // updateTodo: builder.mutation<void, { id: string, data: Partial<Todo> }>({
-    //     query: ({ id, data }) => ({
-    //         url: `todos/${id}`,
-    //         method: 'PUT',
-    //         body: data,
-    //     }),
-    // }),
+    updateOrder: builder.mutation<void, { status: string; orderId: string }>({
+      query: ({ status, orderId }) => ({
+        url: `order/update?orderId=${orderId}&status=${status}`,
+        method: "PATCH",
+      }),
+    }),
   }),
 });
 // , useAddTodoMutation, useDeleteTodoMutation, useUpdateTodoMutation
-export const { useGetOrderByColumsQuery, useGetOrderByRowQuery } = ordersApi;
+export const {
+  useGetOrderByColumsQuery,
+  useGetOrderByRowQuery,
+  useUpdateOrderMutation,
+} = ordersApi;

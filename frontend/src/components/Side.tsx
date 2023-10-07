@@ -62,7 +62,8 @@ const Side = () => {
     }
     return (
         <aside className="w-[300px] max-w-[300px] py-7 flex flex-col justify-between h-screen overflow-y-auto shadow-md bg-white">
-            <div className="flex items-center gap-5 px-6">
+           <div>
+           <div className="flex items-center gap-5 px-6">
                 <Avatar src={avatar_image} className='w-[70px] h-[70px]' />
                 <div >
                     <h1 className='text-global_text_color text-base font-semibold'>Fast Food</h1>
@@ -82,6 +83,7 @@ const Side = () => {
                     )
                 }
             </div>
+           </div>
             <div onClick={logOut} className='py-3 flex items-center px-5 gap-[15px] rounded-e-md cursor-pointer'>
                 <div className='bg-global_silver/50 p-2 group-hover:bg-transparent rounded-md'>
                     <LogOutIcon />

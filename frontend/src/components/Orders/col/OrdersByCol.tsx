@@ -14,7 +14,7 @@ function OrdersByCol() {
     React.useEffect(() => {
         navigate(`?flex=${flex}&status=${status}&page=${page}`)
     }, [])
-    const { data, isLoading } = useGetOrderByColumsQuery({ status: status.toUpperCase(), page, size });
+    const { data, isLoading } = useGetOrderByColumsQuery({ status: status.toUpperCase(), page, size }); 
     return (
         <div className='h-full overflow-y-auto w-full px-10 flex flex-col items-center justify-normal space-y-2.5'>
             {
