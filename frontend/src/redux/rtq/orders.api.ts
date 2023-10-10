@@ -9,14 +9,11 @@ export const ordersApi = createApi({
     // headers: baseQueryHeaders,
   }),
   endpoints: (builder) => ({
-    getOrderByColums: builder.query<
-      ResponeOrderByColType,
-      { status: string; page: string; size: string }
-    >({
+    getOrderByColums: builder.query<ResponeOrderByColType,{ status: string; page: string; size: string }>({
       query: ({ status, page, size }) =>
         `order/byColumns?status=${status}&page=${page}&size=${size}`,
     }),
-    getOrderByRow: builder.query<any, void>({
+    getOrderByRow: builder.query<ResponeOrderByRowType, void>({
       query: () => `order/byRow`,
     }),
     // addTodo: builder.mutation<Todo, Partial<Todo>>({
@@ -26,13 +23,12 @@ export const ordersApi = createApi({
     //         body: newTodo,
     //     }),
     // }),
-    // deleteTodo: builder.mutation<void, { id: string, user_id: string }>({
-    //     query: ({ id, user_id }) => ({
-    //         url: `todos/${id}`,
-    //         method: 'DELETE',
-    //         body: { user_id }
-    //     }),
-    // }),
+    deleteOrder: builder.mutation<void, { id: string }>({
+        query: ({ id }) => ({
+            url: `order/delete?orderId=${id}`,
+            method: 'DELETE',
+        }),
+    }),
     updateOrder: builder.mutation<void, { status: string; orderId: string }>({
       query: ({ status, orderId }) => ({
         url: `order/update?orderId=${orderId}&status=${status}`,
@@ -46,4 +42,5 @@ export const {
   useGetOrderByColumsQuery,
   useGetOrderByRowQuery,
   useUpdateOrderMutation,
+  useDeleteOrderMutation
 } = ordersApi;

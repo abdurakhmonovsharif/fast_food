@@ -64,7 +64,7 @@ const OrdersHeader = () => {
                 <div className=' pr-2 h-full w-full max-w-5xl flex items-center  whitespace-nowrap'>
                     <div className={` ${flex === "row" && 'opacity-40'}  flex items-center justify-between w-full  bg-global_silver h-[48] rounded-3xl p-[6px]   space-x-1`}>
                         {
-                            Object.values(orderStatuses).map((item, index: number) => <Button key={index} onClick={() => changeStatus(item.key)} disabled={flex === "row"} className={`${status === item.key ? 'bg-white shadow-md' : 'bg-transparent'}  w-full py-[5px] rounded-3xl `}>
+                            Object.values(orderStatuses).map((item, index: number) => item.key!="canceled"&& <Button key={index} onClick={() => changeStatus(item.key)} disabled={flex === "row"} className={`${status === item.key ? 'bg-white shadow-md' : 'bg-transparent'}  w-full py-[5px] rounded-3xl `}>
                                 <span className='text-[14px]'>{item.label}</span>
                             </Button>)
                         }

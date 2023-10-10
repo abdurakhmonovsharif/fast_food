@@ -24,6 +24,10 @@ export const orderStatuses: OrderStatusesType = {
   delivered: {
     label: "Yetkazilgan",
     key: "delivered"
+  },
+  canceled:{
+    key:"canceled",
+    label:'Bekor Qilingan'
   }
 }
 const OrdersBody = () => {
@@ -32,7 +36,7 @@ const OrdersBody = () => {
   return (
     <article
       id='article'
-      className={`py-5 space-y-3 h-[calc(100vh-80px)]`}>
+      className={`py-5 space-y-3 h-[calc(100vh-80px)] max-w-7xl mx-auto`}>
       {
         flex === "col" ? <OrdersByCol /> : <OrdersByRow />
       }

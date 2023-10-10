@@ -2,7 +2,7 @@
 import { BookMark, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from "../../../helpers/Icons"
 // components from next ui
 import { Button } from '@nextui-org/react'
-const ColCard = ({ operator, orderCost, shippingCost, orderNumber, customer, branch }: OrderType) => {
+const ColCard = ({  operator, orderCost, shippingCost, orderNumber, customer, branch, handleDelete,handleUpdateStatus }: OrderType) => {
     function calculateTotalSum(): string {
         if (shippingCost && orderCost) {
             const total_sum = shippingCost + orderCost;
@@ -81,10 +81,10 @@ const ColCard = ({ operator, orderCost, shippingCost, orderNumber, customer, bra
                     <p className="text-sm font-semibold max-w-[110px] cursor-text">{branch?.nameUz}</p>
                 </div>
                 <div className="absolute flex flex-col gap-3 -right-5">
-                    <Button isIconOnly className="rounded-full bg-white border-4 border-global_silver">
+                    <Button onClick={handleDelete} isIconOnly className="rounded-full bg-white border-4 border-global_silver">
                         <RejectIcon />
                     </Button>
-                    <Button isIconOnly className="rounded-full bg-white border-4 border-global_silver">
+                    <Button onClick={handleUpdateStatus} isIconOnly className="rounded-full bg-white border-4 border-global_silver">
                         <CheckIcon />
                     </Button>
                 </div>

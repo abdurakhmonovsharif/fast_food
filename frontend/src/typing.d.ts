@@ -14,7 +14,9 @@ type OrderType = {
   orderNumber?: null;
   branch?: Branch;
   handleClick?: (item: OrderType) => void;
-  handleDragStart?: (id: string) => void;
+  handleDragStart?: () => void;
+  handleDelete?: () => void;
+  handleUpdateStatus?: () => void;
 };
 
 type ResponeOrderByRowType = {

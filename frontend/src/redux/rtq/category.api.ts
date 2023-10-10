@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_BASE_URL } from "../api/api";
-const baseQueryHeaders = {
-  Authorization: `Bearer ${""}`,
-};
+// const baseQueryHeaders = {
+//   Authorization: `Bearer ${""}`,
+// };
 
 export const categoryApi = createApi({
   reducerPath: "categoryApi",

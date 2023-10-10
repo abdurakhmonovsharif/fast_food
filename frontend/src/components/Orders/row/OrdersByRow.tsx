@@ -1,54 +1,91 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import MyDrawwer from '../../../helpers/MyDrawwer'
 import { CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from '../../../helpers/Icons';
 import { Button, Spinner } from '@nextui-org/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import RowCard from './RowCard';
-import { useGetOrderByColumsQuery, useGetOrderByRowQuery, useUpdateOrderMutation } from '../../../redux/rtq/orders.api';
+import { useGetOrderByRowQuery, useUpdateOrderMutation } from '../../../redux/rtq/orders.api';
 import { orderStatuses } from '../OrdersBody';
+import QuestionerModal from '../../../helpers/QuestionerModal';
 
 const OrdersByRow = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const flex = searchParams.get("flex")
   const view = searchParams.get("view");
-  const draggingId = searchParams.get("draggingId");
-
+  const dragging = searchParams.get("dragging") || "false";
+  const [updatedingItem, setUpdatedingItem] = useState<OrderType | null>(null)
+  const [visibleQuestionerModal, setVisibleQuestionerModal] = useState(false)
+  const [nextStatus, setNextStatus] = useState<{ label: string, key: string | undefined } | null>(null)
   // drawwer item which card selected 
   const [drawwerItem, setDrawwerItem] = useState<OrderType | null>(null)
 
   const articleElement = document.getElementById('article');
 
-  const handleClick = (item: OrderType) => {
+  // drawwer actions
+  const handleOpenDrawwer = (item: OrderType) => {
     setDrawwerItem(item)
     navigate(`?flex=${flex}&view=${item.id}`)
     if (articleElement) {
       articleElement.style.overflowY = "hidden";
     }
   }
-
   const handleCloseDrawwer = () => {
     navigate(-1)
     if (articleElement) {
       articleElement.style.overflowY = "auto";
     }
   }
+  const agreeToChangeStatus = () => {
+    handlaUpdate()
+  }
+  // open Questioner Modal
+  const openQuestionerModal = (order?: OrderType, status?: { label: string, key: string }) => {
+    if (order && status) {
+      const statusValues = Object.values(orderStatuses);
+      setUpdatedingItem(order);
+      const statusKeys = Object.keys(orderStatuses);
+      if (dragging === "true") {
+        setNextStatus(status);
+      } else {
+        setNextStatus(statusValues[statusKeys.indexOf(status.key) + 1])
+      }
+      setUpdatedingItem(order);
+      setVisibleQuestionerModal(true)
+    }
+  }
+  // update rowCard status to cenceled like delete
+  const handleDelete = (id: string | undefined) => {
+    if (id)
+      updateOrderCard({ orderId: id, status: "CANCELED" }).then(() => refetch())
+
+  }
+  // update after drop row card and update with button click
+  const [updateOrderCard] = useUpdateOrderMutation()
+  const onDrop = (e: React.DragEvent<HTMLDivElement>, newStatus: { label: string, key: string }) => {
+    e.preventDefault();
+    if (updatedingItem?.id)
+      openQuestionerModal(updatedingItem, newStatus)
+  };
+  const handlaUpdate = () => {
+    const orderId = updatedingItem?.id;
+    if (orderId && nextStatus?.key)
+      updateOrderCard({ orderId, status: nextStatus?.key?.toUpperCase() }).then(() => {
+        navigate(`?flex=${flex}`)
+        setUpdatedingItem(null);
+        setNextStatus(null)
+        refetch()
+      })
+  }
   // drag and drop change status
-  const handleDragStart = (id: string) => {
-    navigate(`?flex=${flex}&draggingId=${id}`)
+  const handleDragStart = (item: OrderType) => {
+    setUpdatedingItem(item);
+    navigate(`?flex=${flex}&&dragging=true`)
   };
   const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
-  // update after drop row card
-  const [updateRowCard] = useUpdateOrderMutation()
-  const onDrop = (e: React.DragEvent<HTMLDivElement>, newStatus: string) => {
-    e.preventDefault();
-    if (draggingId)
-      updateRowCard({ orderId: draggingId, status: newStatus.toUpperCase() }).then(() => refetch())
-    navigate(-1)
-  };
-
+  // calculate total sum 
   function calculateTotalSum(shippingCost: number, orderCost: number): number {
     if (shippingCost && orderCost) {
       const total_sum = shippingCost + orderCost;
@@ -80,12 +117,12 @@ const OrdersByRow = () => {
           :
           <div className="grid grid-rows-1 grid-cols-4 gap-[14px] py-[11px] px-10 overflow-y-auto  h-full">
             {
-              entriesStatuses.map(statusItem => <React.Fragment
+              entriesStatuses.map(statusItem => statusItem[1].key != "canceled" && <React.Fragment
                 key={statusItem[1].label}>
                 <div
                   className="space-y-2 "
                   onDragOver={(e) => onDragOver(e)}
-                  onDrop={(e) => onDrop(e, statusItem[1].key)}
+                  onDrop={(e) => onDrop(e, statusItem[1])}
                 >
                   <div className='flex items-center gap-3'>
                     <p className='text-sm text-global_text_color/80 font-medium'>{statusItem[1].label}</p>
@@ -99,14 +136,18 @@ const OrdersByRow = () => {
                   </div>
                   {
                     filteredRowCardsArray(statusItem[1].key).map(item => <RowCard
-                      handleDragStart={handleDragStart}
-                      handleClick={handleClick} {...item} />)
+                      key={item.id}
+                      handleUpdateStatus={() => openQuestionerModal(item, { label: statusItem[1].label, key: statusItem[1].key })}
+                      handleDragStart={() => handleDragStart(item)}
+                      handleDelete={() => handleDelete(item.id)}
+                      handleClick={handleOpenDrawwer} {...item} />)
                   }
                 </div>
               </React.Fragment>)
             }
           </div>
       }
+      {/* row card items */}
       <MyDrawwer mt={67.7} size="sm" isOpen={!!view} onClose={handleCloseDrawwer} >
         <div className='py-3 w-full h-full flex flex-col justify-between'>
           <div className=' space-y-4'>
@@ -202,6 +243,12 @@ const OrdersByRow = () => {
           </div>
         </div>
       </MyDrawwer>
+      {/* questioner modal */}
+      <QuestionerModal isOpen={visibleQuestionerModal} onClose={() => setVisibleQuestionerModal(false)} ifAgree={agreeToChangeStatus}>
+        <h1 className='text-global_text_color text-lg  p-2'>
+          {updatedingItem?.orderNumber} raqamli buyurtmani statusini <span className='font-semibold'>{nextStatus?.label}</span>  statusiga o'zgartirasizmi ?
+        </h1>
+      </QuestionerModal>
     </React.Fragment >
   )
 }

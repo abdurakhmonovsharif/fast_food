@@ -3,7 +3,7 @@ import { BookMark, CheckIcon, ClockIcon, RejectIcon, UserIcon } from "../../../h
 
 // components from next ui
 import { Button } from "@nextui-org/react"
-const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderNumber, shippingCost, handleClick, handleDragStart }: OrderType) => {
+const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderNumber, shippingCost, handleClick, handleDragStart, handleDelete,handleUpdateStatus }: OrderType) => {
     const item: OrderType = {
         branch, customer, id, operator, orderItems, orderCost, orderNumber, shippingCost
     }
@@ -17,10 +17,10 @@ const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderN
     }
     return (
         <div
-            onDragStart={() => handleDragStart?.(id ?? "")}
+            onDragStart={handleDragStart}
             onClick={() => handleClick?.(item)}
             draggable
-            className="px-4 py-5 bg-white cursor-pointer  rounded-md shadow-xl hover:scale-[1.02] transition-all duration-250"
+            className="px-4 py-5 bg-white cursor-pointer rounded-md shadow-xl hover:scale-[1.02] transition-all duration-250"
         >
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-[10px]">
@@ -37,11 +37,11 @@ const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderN
                 </div>
             </div>
             <hr className="my-[18px]" />
-            <div className="flex justify-between gap-[18px]">
+            <div className="flex justify-between gap-[18px] items-center">
                 <div className="mt-1.5">
                     <UserIcon />
                 </div>
-                <div className="space-y-0.5 cursor-auto">
+                <div className="space-y-0.5 cursor-auto text-end">
                     <p className="text-base font-medium text-global_text_color">{customer?.name}</p>
                     <p className="text-xs font-medium text-global_text_color/60">{customer?.phoneNumber}</p>
                 </div>
@@ -70,10 +70,10 @@ const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderN
                 </div>
                 <div>
                     <div className=" flex flex-col gap-3 -right-5">
-                        <Button isIconOnly className="rounded-full bg-white border-4 border-global_silver">
+                        <Button onClick={handleDelete} isIconOnly className="rounded-full bg-white border-4 border-global_silver">
                             <RejectIcon />
                         </Button>
-                        <Button isIconOnly className="rounded-full bg-white border-4 border-global_silver">
+                        <Button onClick={handleUpdateStatus} isIconOnly className="rounded-full bg-white border-4 border-global_silver">
                             <CheckIcon />
                         </Button>
                     </div>
