@@ -13,6 +13,7 @@ type OrderType = {
   shippingCost?: number;
   orderNumber?: null;
   branch?: Branch;
+  currentOrderStatus?: string;
   handleClick?: (item: OrderType) => void;
   handleDragStart?: () => void;
   handleDelete?: () => void;

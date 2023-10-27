@@ -27,7 +27,7 @@ export const orderStatuses: OrderStatusesType = {
   },
   canceled:{
     key:"canceled",
-    label:'Bekor Qilingan'
+    label:'Yopilgan'
   }
 }
 const OrdersBody = () => {

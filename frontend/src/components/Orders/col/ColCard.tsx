@@ -1,5 +1,5 @@
 // helpers
-import { BookMark, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from "../../../helpers/Icons"
+import { ArchiveIcon2, CallIcon, CheckIcon, ClockIcon, PasteIcon, RejectIcon, TrackIcon, UserIcon } from "../../../helpers/Icons"
 // components from next ui
 import { Button } from '@nextui-org/react'
 const ColCard = ({  operator, orderCost, shippingCost, orderNumber, customer, branch, handleDelete,handleUpdateStatus }: OrderType) => {
@@ -25,7 +25,7 @@ const ColCard = ({  operator, orderCost, shippingCost, orderNumber, customer, br
                     </div>
                 </div>
                 <Button isIconOnly className=" bg-global_silver p-3 rounded-full mt-0.5">
-                    <BookMark />
+                    <ArchiveIcon2 />
                 </Button>
             </div>
             <div className="border-r-2 flex justify-center flex-col items-center px-[34px]">

@@ -1,9 +1,9 @@
 // helpers
-import { BookMark, CheckIcon, ClockIcon, RejectIcon, UserIcon } from "../../../helpers/Icons"
+import { ArchiveIcon2, CheckIcon, ClockIcon, RejectIcon, UserIcon } from "../../../helpers/Icons"
 
 // components from next ui
 import { Button } from "@nextui-org/react"
-const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderNumber, shippingCost, handleClick, handleDragStart, handleDelete,handleUpdateStatus }: OrderType) => {
+const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderNumber, shippingCost, currentOrderStatus, handleClick, handleDragStart, handleDelete, handleUpdateStatus }: OrderType) => {
     const item: OrderType = {
         branch, customer, id, operator, orderItems, orderCost, orderNumber, shippingCost
     }
@@ -28,7 +28,7 @@ const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderN
                         <span className="text-sm font-medium text-white cursor-auto">{orderNumber}</span>
                     </div>
                     <Button isIconOnly className="bg-global_silver rounded-full">
-                        <BookMark />
+                        <ArchiveIcon2 />
                     </Button>
                 </div>
                 <div className="flex items-center gap-2">
@@ -73,9 +73,12 @@ const RowCard = ({ branch, customer, id, operator, orderItems, orderCost, orderN
                         <Button onClick={handleDelete} isIconOnly className="rounded-full bg-white border-4 border-global_silver">
                             <RejectIcon />
                         </Button>
-                        <Button onClick={handleUpdateStatus} isIconOnly className="rounded-full bg-white border-4 border-global_silver">
-                            <CheckIcon />
-                        </Button>
+                        {
+                            currentOrderStatus != "delivered" &&
+                            <Button onClick={handleUpdateStatus} isIconOnly className="rounded-full bg-white border-4 border-global_silver">
+                                <CheckIcon />
+                            </Button>
+                        }
                     </div>
                 </div>
             </div>

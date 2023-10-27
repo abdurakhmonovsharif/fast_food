@@ -66,11 +66,7 @@ export const ClockIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={18
         <path d="M9 4.20001V9.00001L12.2 10.6" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
     </g>
 </svg>;
-export const BookMark = () => <svg xmlns="http://www.w3.org/2000/svg" width={15} height={18} viewBox="0 0 15 18" fill="none">
-    <g opacity="0.5">
-        <path fillRule="evenodd" clipRule="evenodd" d="M13.4444 17L7.22222 12.5556L1 17V2.77778C1 1.79594 1.79594 1 2.77778 1H11.6667C12.6485 1 13.4444 1.79594 13.4444 2.77778V17Z" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    </g>
-</svg>;
+export const ArchiveIcon2 = () => <svg fill="#000000" height={30} width={30} version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 54 54" xmlSpace="preserve"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M53,10.5H23.535l-3.703-5.555C19.646,4.667,19.334,4.5,19,4.5H1c-0.553,0-1,0.447-1,1v6v4v29.003 C0,47.259,2.24,49.5,4.994,49.5h44.012C51.76,49.5,54,47.259,54,44.503V15.5v-4C54,10.947,53.553,10.5,53,10.5z M52,14.5H2v-2h21 h29V14.5z M2,6.5h16.465l2.667,4H2V6.5z M52,44.503c0,1.652-1.343,2.997-2.994,2.997H4.994C3.343,47.5,2,46.155,2,44.503V16.5h50 V44.503z" /> <path d="M27,44.5c6.617,0,12-5.383,12-12s-5.383-12-12-12s-12,5.383-12,12S20.383,44.5,27,44.5z M27,22.5c5.514,0,10,4.486,10,10 s-4.486,10-10,10s-10-4.486-10-10S21.486,22.5,27,22.5z" /> <path d="M25.9,38.8c0.174,0.131,0.385,0.2,0.6,0.2c0.066,0,0.134-0.007,0.2-0.021c0.279-0.057,0.522-0.231,0.665-0.479l5.5-9.5 c0.277-0.478,0.113-1.09-0.364-1.366c-0.477-0.279-1.09-0.114-1.366,0.364l-4.936,8.525L23.1,34.2 c-0.441-0.331-1.067-0.242-1.399,0.2c-0.332,0.441-0.242,1.068,0.2,1.399L25.9,38.8z" /> </g> </g> </g></svg>;
 export const UserIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width={16} height={18} viewBox="0 0 16 18" fill="none">
     <g opacity="0.5">
         <path d="M15.2222 17V15.2222C15.2222 13.2585 13.6303 11.6667 11.6667 11.6667H4.55556C2.59188 11.6667 1 13.2585 1 15.2222V17" stroke="#2D3A45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />

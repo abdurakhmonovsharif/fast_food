@@ -135,12 +135,12 @@ const OrdersByRow = () => {
                     <p className='text-global_text_color font-bold text-lg whitespace-nowrap'>{calculateTotalSumByStatus(statusItem[1].key)} UZS</p>
                   </div>
                   {
-                    filteredRowCardsArray(statusItem[1].key).map(item => <RowCard
+                    filteredRowCardsArray(statusItem[1].key).map((item) => <RowCard
                       key={item.id}
                       handleUpdateStatus={() => openQuestionerModal(item, { label: statusItem[1].label, key: statusItem[1].key })}
                       handleDragStart={() => handleDragStart(item)}
                       handleDelete={() => handleDelete(item.id)}
-                      handleClick={handleOpenDrawwer} {...item} />)
+                      handleClick={handleOpenDrawwer} {...item} currentOrderStatus={statusItem[1].key} />)
                   }
                 </div>
               </React.Fragment>)
@@ -246,6 +246,7 @@ const OrdersByRow = () => {
       {/* questioner modal */}
       <QuestionerModal isOpen={visibleQuestionerModal} onClose={() => setVisibleQuestionerModal(false)} ifAgree={agreeToChangeStatus}>
         <h1 className='text-global_text_color text-lg  p-2'>
+          <span className='font-semibold'> {updatedingItem?.customer.name}</span> ga tegishli {" "}
           {updatedingItem?.orderNumber} raqamli buyurtmani statusini <span className='font-semibold'>{nextStatus?.label}</span>  statusiga o'zgartirasizmi ?
         </h1>
       </QuestionerModal>

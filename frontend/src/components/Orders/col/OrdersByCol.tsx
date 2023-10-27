@@ -33,19 +33,27 @@ function OrdersByCol() {
             updateOrderCard({ orderId, status: newStatus.toUpperCase() }).then(() => refetch())
     }
     return (
-        <div className='h-full overflow-y-auto w-full px-10 flex flex-col items-center justify-normal space-y-2.5'>
-            {
-                isLoading ?
-                    <Spinner className='w-full h-full' size='lg' color='success' /> :
-                    !data?.data.empty ? data?.data?.content?.map(item => <ColCard
-                        handleDelete={() => handleDelete(item.id)}
-                        handleUpdateStatus={() => handleUpdate(item.id)}
-                        key={item.id} {...item} />) :
-                        <div className='w-full h-full'>
-                            <p className='text-global_text_color text-lg text-center'>Ma'lumot topilmadi</p>
-                        </div>
-            }
-        </div>
+        <React.Fragment>
+            <div className='h-full overflow-y-auto w-full px-10 flex flex-col items-center justify-normal space-y-2.5'>
+                {
+                    isLoading ?
+                        <Spinner className='w-full h-full' size='lg' color='success' /> :
+                        !data?.data.empty ? data?.data?.content?.map(item => <ColCard
+                            handleDelete={() => handleDelete(item.id)}
+                            handleUpdateStatus={() => handleUpdate(item.id)}
+                            key={item.id} {...item} />) :
+                            <div className='w-full h-full'>
+                                <p className='text-global_text_color text-lg text-center'>Ma'lumot topilmadi</p>
+                            </div>
+                }
+            </div>
+            {/* questioner modal */}
+            {/* <QuestionerModal isOpen={visibleQuestionerModal} onClose={() => setVisibleQuestionerModal(false)} ifAgree={agreeToChangeStatus}>
+                <h1 className='text-global_text_color text-lg  p-2'>
+                    {updatedingItem?.orderNumber} raqamli buyurtmani statusini <span className='font-semibold'>{nextStatus?.label}</span>  statusiga o'zgartirasizmi ?
+                </h1>
+            </QuestionerModal> */}
+        </React.Fragment>
     )
 }
 
